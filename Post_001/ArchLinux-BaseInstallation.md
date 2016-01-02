@@ -65,23 +65,23 @@ You need to boot your computer using the USB key we made above.
    cfdisk /dev/sda
    ```  
 4. **Format the main partition and mount the new formatted disk**   
-    We need to format the new data partition as ext4 (Current standard Linux file system type). Following this step we will have to mount the new formatted partition in the current Archlinux installation boot OS to be able to download and install the base Archlinux packages later on.
-```batsh  
+    We need to format the new data partition as ext4 (Current standard Linux file system type). Following this step we will have to mount the new formatted partition in the current Archlinux installation boot OS to be able to download and install the base Archlinux packages later on.  
+   ``` batsh  
 mkfs.ext4 /dev/sda2  
 mount /dev/sda2 /mnt
-```
+   ```
 5. **Initialize  the Swap partition**  
 The Swap partition is initialize using the following simple command. The first one initialize the swap whereas the second enable it.
-```batsh
+   ``` batsh
 mkswap /dev/sda1
 swapon /dev/sda1
-```  
+   ```
 6. **Enable the network**
  This can be different in function of the usage of wired or wireless network. I will explain below for wireless. Network using wire should be enabled by default.
 The base install image come with an utility that help you to find and set your wifi connection.  Run the command below to set your wifi connection
-```bash
+   ``` batsh
 wifi-menu
-```
+   ``` 
 
 
 8. pacstrap /mnt base base-devel
