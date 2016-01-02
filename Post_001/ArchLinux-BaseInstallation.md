@@ -15,10 +15,10 @@ choco install yumi```
 Creating the USB Boot drive
 ---
 1. Open Yumi and set the parameters as below. Don't forget to check "*we Will Fat32 Format F: Drive!* "  
-   ![Yumi setting](.\Yumi Setting.PNG)  
+   ![Yumi setting](./Yumi Setting.PNG)  
 
 2. Click "*Create*" and wait for the creation of boot USB key
-   ![Yumi Running](.\Yumi Running.PNG)
+   ![Yumi Running](./Yumi Running.PNG)
 
 Installation of Arch Linux
 ===
@@ -34,11 +34,11 @@ You need to boot your computer using the USB key we made above.
    You can select the installation you want to do. In our case we want to install the i686 which is the 32 bits version of Arch Linux.  
    if you want to install a 64 bits version of ArchLinux you will have to select x86_64
 
-   ![Arch Install](.\01 - ArchLinux Boot Screen.PNG)  
+   ![Arch Install](./01 - ArchLinux Boot Screen.PNG)  
 
    This will bring you to the basic command prompt. This prompt is the one of the installation OS which is hosted on the USB Key
 
-   ![Arch base prompt](.\02 - ArchLinux Startup prompt.PNG)  
+   ![Arch base prompt](./02 - ArchLinux Startup prompt.PNG)  
 
 2. **Find the install drive name**  
  Before we start installing ArchLinux we need to find the main drive that will be used to install it.
@@ -64,19 +64,18 @@ You need to boot your computer using the USB key we made above.
    ``` batsh
    cfdisk /dev/sda
    ```  
-
 4. **Format the main partition and mount the new formatted disk**   
     We need to format the new data partition as ext4 (Current standard Linux file system type). Following this step we will have to mount the new formatted partition in the current Archlinux installation boot OS to be able to download and install the base Archlinux packages later on.
- ```bash  
-  mkfs.ext4 /dev/sda2  
-  mount /dev/sda2 /mnt
-  ```
+```batsh  
+mkfs.ext4 /dev/sda2  
+mount /dev/sda2 /mnt
+```
 5. **Initialize  the Swap partition**  
 The Swap partition is initialize using the following simple command. The first one initialize the swap whereas the second enable it.
-```bash
+```batsh
 mkswap /dev/sda1
- swapon /dev/sda1
- ```  
+swapon /dev/sda1
+```  
 6. **Enable the network**
  This can be different in function of the usage of wired or wireless network. I will explain below for wireless. Network using wire should be enabled by default.
 The base install image come with an utility that help you to find and set your wifi connection.  Run the command below to set your wifi connection
