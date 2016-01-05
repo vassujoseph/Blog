@@ -79,66 +79,66 @@ The Swap partition is initialize using the following simple command. The first o
    ```
 6. **Enable the network**  
  This can be different in function of the usage of wired or wireless network. I will explain below for wireless. Network using wire should be enabled by default. The base install image come with an utility that help you to find and set your wifi connection.  Run the command below to set your wifi connection.    
-   ```batch
-    wifi-menu
-   ```  
+```batch
+wifi-menu
+```  
 7. **Download all the Archlinux base packages**  
 Now that we have the network we can download from the Internet all the base and base-devel packages ofArchlinux to the /mnt mount point. We do that by running the following command.  
-    ```batch
-    pacstrap /mnt base base-devel
-    ```    
+```batch
+pacstrap /mnt base base-devel
+```    
 8. **Start ArchLinux partition**  
 Now that we downloaded all the packages required for the base image of ARchlinux it's time to start that new partition. Archlinux come with a specific toll that start the archlinux session as root. When you will run the command you will see the command prompt chamging.  
-    ```batch
-    arch-chroot /mnt
-    ```   
+```batch
+arch-chroot /mnt
+```   
 9. **Change the root password**
 First think first. Securing the new installed OS. For that we need to chasnge the current password of the root account which we are connecting with. Run the follwoign command and enter the root password you want.  
-    ```batch
-    passwd
-    ```    
+```batch
+passwd
+```    
 10. **Enable the local setting**  
 The computer local settings a re define in the file  */etc/locale.gen*. This file contain all the locale predefine. We just have to uncomment the one we want to enable.  You can do that using 'vi' or 'nano'. In our case we wil use nano here. Wehn we finish editing the file /8/etc/locale.gen* we will run the command *lcoale-gen* to generate the file we need.  
-    ```batch
-    nano /etc/locale.gen
-    locale-gen
-    ```    
+```batch
+nano /etc/locale.gen
+locale-gen
+```    
 11. **set the time zone**  
 On Linux all the time zone info are define int eh location */usr/share/zoneinf*. We will have to create a link between the time zone we want and the file */etc/localtime*. The first command list the time zone info. Your time zone can be locate in another child folder. For example Paris is under the folder Europe. The second command create the link between the time zone we want and the configuration file that Linux is reading this information from.  
-    ```batch
-    ls /usr/share/zoneinfo -ali
-    ln -s /usr/share/zoneinfo/Hongkong /etc/localtime
-    ```  
+```batch
+ls /usr/share/zoneinfo -ali
+ln -s /usr/share/zoneinfo/Hongkong /etc/localtime
+```  
 12. **Give a name to the computer**  
 We have to set a file named */etc/hostna,e* that contain the name of hte current computer. The best way to do that is the print to the file the name using output redirection.  
-    ```batch
-    echo archlinuxEeePC > /etc/hostname
-    ```  
+```batch
+echo archlinuxEeePC > /etc/hostname
+```  
 13. **Install some useful packages for wireless**  
 As we are installing ArchLinux on a lap We top it's useful to install some  network tool to be able to reconnect after the reboot. The package is netctl that allow to manahge configuration using profile. We are installing as well dialog to allow the command *wifi-menu* that we used earlier to work.  
-    ```batch
-    pacman -S netctl dialog
-    ```  
+```batch
+pacman -S netctl dialog
+```  
 14. **Installing and Setting Grub boot loader**  
 Almost done.  :-)  
 We have now to install and set the bootloader. Teh most commun used today is Grub. The bootloader allow to choose the OS we want to boot and take all the driver initialize. The command we have to run are the following and will do :
     - Download the Grub package from internet.
     - Install Grub as bootloader on the drive */dev/sda*
     - Create the default configuration of Grub. This is the default one. We will on another article how to customize that.  
-    ```batch
-    pacman -S grub-bios
-    grub-install /dev/sda
-    mkinitcpio -p Linux
-    grub-mkconfig -o /boot/grub/grub.cfg
-    ```  
+```batch
+pacman -S grub-bios
+grub-install /dev/sda
+mkinitcpio -p Linux
+grub-mkconfig -o /boot/grub/grub.cfg
+```  
 15. **Final steps. unmount and reboot**  
 Here we are... We have to run the below command to exit the current instance of ArchLinux we just set and return to the boot OS. Following that we will create the  static information about the file system and unmount the file system and finally reboot.  
-    ```batch
-    exit
-    genfstab /mnt >> /mnt/etc/fstab
-    umount /mnt
-    shutdown -r
-    ```  
+```batch
+exit
+genfstab /mnt >> /mnt/etc/fstab
+umount /mnt
+shutdown -r
+```  
 
 Wrapping  
 =======
