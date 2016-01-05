@@ -18,14 +18,14 @@ Setting Sudo
 The next step is to install and set *sudo* to allow the group wheel to run command on elevate mode. 'sudo' stand for 'Superuser Do' and will allow us to continue the installation without using the root account.
 
 1. **Installing sudo**  
-    ```batch
-    pacman -S sudo
-    ```  
+```batch
+pacman -S sudo
+```  
 2. **Setting sudo**  
-We have to edit the sudo configuration file to grant the permission. Editing the sudo configuraiton need to to be done using visudo. This ensure when we are saving the file that it is valid and wont lock us.
-    ```batch
-    visudo
-    ```  
+We have to edit the sudo configuration file to grant the permission. Editing the sudo configuraiton need to to be done using visudo. This ensure when we are saving the file that it is valid and wont lock us.  
+```batch
+visudo
+```  
 
 We are at that point in our favorite text editor, VI :-). I hope you remember your basic here. The only key will need are
     - i : insert
@@ -42,16 +42,16 @@ Disable root
 -----------
 Disabling the *root* account is not mandatory, but is strongly recommended as everyone know the root account on Linux.  
 
-1. **Disconnect from the current root session**
+1. **Disconnect from the current root session**  
   ```batch
   exit
     ```   
 2. **Connect with your user account**  
 3. **Disable root**  
-The best way to disable the rpot account is to lock it. For that run the following command.
-  ```batch
-  sudo passwd -l root
-  ```  
+The best way to disable the rpot account is to lock it. For that run the following command.  
+```batch
+sudo passwd -l root
+```  
 
 Summary
 ------
