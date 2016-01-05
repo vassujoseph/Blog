@@ -1,21 +1,21 @@
-If you follow the previous article of this serie about setting Arch Linux, you should be at the point where you have a base Linux system.
+If you follow the previous article of the  serie about setting Arch Linux, you should be at the point where you have a base Linux system.
 
-In this post I will focus on the creation of a users, installing and setting *sudo* and disablling the root account. You can find detailed information by following this [link](
+In this post I will focus on the creation of a users, installing and setting *sudo* and disabling the root account. You can find detailed information by following this [link](
 https://wiki.archlinux.org/index.php/Sudo)
 
 Creation of users
 -----------------
-Following the reboot of your ArchLinux installation you will be asked to connect. Use root (I promess this is the last time we will use it) and the password you setup in the previous article
+Following the reboot of your ArchLinux installation you will be asked to connect. Use root and the password you setup in the previous article
 
 We are creating a new account and add it in the group wheel by default. The group wheel is a group that allow you to run some restricted command from that user. As I want this account to be advance power, this is the group I want to be part of.
-  ```batch
+````batch
 useradd -m -g wheel [account name]
 passd [account name]
-    ```  
+```  
 
 Setting Sudo
 -----------
-The next step is to install and set *sudo* to allow the group wheel to run command on eleveate mode. 'sudo' stand for 'Superuser Do' and will allow us to continue the installation without using the root account.
+The next step is to install and set *sudo* to allow the group wheel to run command on elevate mode. 'sudo' stand for 'Superuser Do' and will allow us to continue the installation without using the root account.
 
 1. **Installing sudo**  
     ```batch
@@ -40,7 +40,7 @@ follow this link if you want to read more about [sudo](https://wiki.archlinux.or
 
 Disable root
 -----------
-Disabling the *root* accout is not mandatory, but is strongly recommanded as everyone know the root account on Linux.  
+Disabling the *root* account is not mandatory, but is strongly recommended as everyone know the root account on Linux.  
 
 1. **Disconnect from the current root session**
   ```batch
