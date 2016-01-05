@@ -70,7 +70,6 @@ You need to boot your computer using the USB key we made above.
     mkfs.ext4 /dev/sda2
     mount /dev/sda2 /mnt
    ```  
-
 5. **Initialize  the Swap partition**  
   The Swap partition is initialize using the following simple command. The first one initialize the swap whereas the second enable it.  
    ```batch
@@ -79,36 +78,36 @@ You need to boot your computer using the USB key we made above.
    ```
 6. **Enable the network**  
   This can be different in function of the usage of wired or wireless network. I will explain below for wireless. Network using wire should be enabled by default. The base install image come with an utility that help you to find and set your wifi connection.  Run the command below to set your wifi connection.    
-  ```batch
-  wifi-menu
-  ```  
+    ```batch
+    wifi-menu
+    ```  
 7. **Download all the Archlinux base packages**  
   Now that we have the network we can download from the Internet all the base and base-devel packages ofArchlinux to the /mnt mount point. We do that by running the following command.  
-  ```batch
-  pacstrap /mnt base base-devel
-  ```    
+    ```batch
+    pacstrap /mnt base base-devel
+    ```    
 8. **Start ArchLinux partition**  
   Now that we downloaded all the packages required for the base image of ARchlinux it's time to start that new partition. Archlinux come with a specific toll that start the archlinux session as root. When you will run the command you will see the command prompt chamging.  
-  ```batch
-  arch-chroot /mnt
-  ```   
+    ```batch
+    arch-chroot /mnt
+    ```   
 9. **Change the root password**
   First think first. Securing the new installed OS. For that we need to chasnge the current password of the root account which we are connecting with. Run the follwoign command and enter the root password you want.  
-  ```batch
-  passwd
-  ```    
+    ```batch
+    passwd
+    ```    
 10. **Enable the local setting**  
   The computer local settings a re define in the file  */etc/locale.gen*. This file contain all the locale predefine. We just have to uncomment the one we want to enable.  You can do that using 'vi' or 'nano'. In our case we wil use nano here. Wehn we finish editing the file /8/etc/locale.gen* we will run the command *lcoale-gen* to generate the file we need.  
-  ```batch
-  nano /etc/locale.gen
-  locale-gen
-  ```    
+    ```batch
+    nano /etc/locale.gen
+    locale-gen
+    ```    
 11. **set the time zone**  
   On Linux all the time zone info are define int eh location */usr/share/zoneinf*. We will have to create a link between the time zone we want and the file */etc/localtime*. The first command list the time zone info. Your time zone can be locate in another child folder. For example Paris is under the folder Europe. The second command create the link between the time zone we want and the configuration file that Linux is reading this information from.  
-  ```batch
-  ls /usr/share/zoneinfo -ali
-  ln -s /usr/share/zoneinfo/Hongkong /etc/localtime
-  ```  
+    ```batch
+    ls /usr/share/zoneinfo -ali
+    ln -s /usr/share/zoneinfo/Hongkong /etc/localtime
+    ```  
 12. **Give a name to the computer**  
   We have to set a file named */etc/hostna,e* that contain the name of hte current computer. The best way to do that is the print to the file the name using output redirection.  
   ```batch
