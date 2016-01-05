@@ -134,20 +134,22 @@ You need to boot your computer using the USB key we made above.
       - Download the Grub package from internet.
       - Install Grub as bootloader on the drive */dev/sda*
       - Create the default configuration of Grub. This is the default one. We will on another article how to customize that.  
-  ```batch
-  pacman -S grub-bios
-  grub-install /dev/sda
-  mkinitcpio -p Linux
-  grub-mkconfig -o /boot/grub/grub.cfg
-  ```  
+    
+    ```batch
+    pacman -S grub-bios
+    grub-install /dev/sda
+    mkinitcpio -p Linux
+    grub-mkconfig -o /boot/grub/grub.cfg
+    ```  
 15. **Final steps. unmount and reboot**  
   Here we are... We have to run the below command to exit the current instance of ArchLinux we just set and return to the boot OS. Following that we will create the  static information about the file system and unmount the file system and finally reboot.  
-  ```batch
-  exit
-  genfstab /mnt >> /mnt/etc/fstab
-  umount /mnt
-  shutdown -r
-  ```  
+    
+    ```batch
+    exit
+    genfstab /mnt >> /mnt/etc/fstab
+    umount /mnt
+    shutdown -r
+    ```  
 
 Wrapping  
 =======
