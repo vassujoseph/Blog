@@ -2,7 +2,28 @@ For this article we will focus on setting up inetwork setup (at least what I fin
 
 Setting up the network, and more specifically the wifi can be disturbing. However even without X windows they are some nice simple tool to help you to setup the wifi connection like 'wifi-menu' we used earlier.
 
-If you follow the step to setup the base installation from this [article](Need to define) you should already have on your installation the packages [netctl](https://wiki.archlinux.org/index.php/netctl) and [dialog](http://linuxcommand.org/lc3_adv_dialog.php).
+If you follow the step to setup the base installation from this [article](Need to define) you should already have from your base installation the packages [netctl](https://wiki.archlinux.org/index.php/netctl) and [dialog](http://linuxcommand.org/lc3_adv_dialog.php).
+
+Connection Manually
+===================
+Before trying to connect using some auto detection it's would be good to understand what is happening under the hood. *netctl* is  a simple command that allow you to list available profiles,  start profile or stop profile. In this section we will look first at how to setup a wired connection follow by a wifi one, and get a quick overview of the netctl command line tool.
+
+
+Setting wire profile
+====================
+
+*netctl* is storing the connection profile in the folder */etc/netctl*. This folder has a child one named */etc/netctl/example* which contain a set of different example of profile. We are interested here about the example profile for which the name is starting with 'ethernet'. In my case I have 3 examples
+    - ethernet-custom : Allow you to see all the available field you can setup
+    - ethernet-dhcp : example to connect and getting the IP address from a DHCP server
+    - etherbet-static : example to setup a profile using a static IP address
+
+As my router is doing as well DHCP server for me, I will simple setup the profile using ethernet-dhcp as a sample. The step we have to do are:
+    1. *Find the ethernet network interface name*
+        Linux allow you to query and manupulate the network interface 
+    2. Copy the example file to */etc/netctl* 
+    3. Edit the configuration
+    4. Check the permission (We only want Root to have permission to the file)
+
 
 Connecting using wifi-menu
 =========================
@@ -20,16 +41,6 @@ You should see the following screen when you are running this command.
 
 ![image wifi-menu][]
 
-Setting up the Wire connection file
-===================================
-
-*wifi-menu* is great to create wifi conneciton profile. However they are no equivalent for wired connection. The best think to do is to use some of the template that exist in the folder */etc/netctl/example* and customizing it for your computer.
-
-In my case I want a simple DHCP setup on my network card. The step we have to do are
-    1. Find the network interface name
-    2. Copy the example file to */etc/netctl* 
-    3. Edit the configuration
-    4. Check the permission (We only want Root to have permission to the file)
 
 
 
