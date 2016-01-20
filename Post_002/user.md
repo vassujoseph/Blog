@@ -33,8 +33,8 @@ The next step is to install and set up *sudo* to allow the group wheel to run co
       - esc : exit the edit mode
       - :wq : save and quit
 
-  At the end of the file you will see a section that contains a lot of commented lines (starting with #) which represent some templates. We want to add there the following lines.  
-  ##Allow members of group wheel to execute any command.
+  At the end of the file you will see a section that contains a lot of commented lines (starting with #) which represent some templates. We want to add there the following lines which Allow members of group wheel to execute any command.
+  
   %wheel ALL=(ALL) ALL
 
   Follow this link if you want to read more about [sudo](https://wiki.archlinux.org/index.php/Sudo).
