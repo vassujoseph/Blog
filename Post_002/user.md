@@ -16,28 +16,28 @@ passd [account name]
 
 The next step is to install and set up *sudo* to allow the group wheel to run command in elevate mode. 'sudo' stands for 'Superuser Do' and will allow us to continue the installation without using the root account.
 
-    1. ### Installing sudo
+1. ### Installing sudo
 
     ```batch
     pacman -S sudo
     ```  
-    2. ## Setting sudo
+2. ## Setting sudo
 
-    We have to edit the sudo configuration file to grant the permission. Editing the sudo configuraiton needs to to be done using visudo. This ensures when we are saving the file that it is valid and wont lock us.  
-    ```batch
-    visudo
-    ```  
+  We have to edit the sudo configuration file to grant the permission. Editing the sudo configuraiton needs to to be done using visudo. This ensures when we are saving the file that it is valid and wont lock us.  
+  ```batch
+  visudo
+  ```  
 
-    We are at that point in our favorite text editor, VI :-). I hope you remember your basics here. The only keys you will need are
-        - i : insert
-        - esc : exit the edit mode
-        - :wq : save and quit
+  We are at that point in our favorite text editor, VI :-). I hope you remember your basics here. The only keys you will need are
+      - i : insert
+      - esc : exit the edit mode
+      - :wq : save and quit
 
-    At the end of the file you will see a section that contains a lot of commented lines (starting with #) which represent some templates. We want to add there the following lines.  
-    ##Allow members of group wheel to execute any command.
-    %wheel ALL=(ALL) ALL
+  At the end of the file you will see a section that contains a lot of commented lines (starting with #) which represent some templates. We want to add there the following lines.  
+  ##Allow members of group wheel to execute any command.
+  %wheel ALL=(ALL) ALL
 
-Follow this link if you want to read more about [sudo](https://wiki.archlinux.org/index.php/Sudo).
+  Follow this link if you want to read more about [sudo](https://wiki.archlinux.org/index.php/Sudo).
 
 ## Disable root
 
