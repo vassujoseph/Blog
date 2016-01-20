@@ -43,16 +43,18 @@ The next step is to install and set up *sudo* to allow the group wheel to run co
 
 Disabling the *root* account is not mandatory, but is strongly recommended as everyone knows the root account on Linux.  
 
-1. ### Disconnect from the current root session
+1. Disconnect from the current root session
   ```batch
   exit
     ```   
-2. ### Connect with your user account
-3. ### Disable root
-The best way to disable the root account is to lock it. For that run the following command.  
-```batch
-sudo passwd -l root
-```  
+2. Connect with your user account
+
+3. Disable root
+
+  The best way to disable the root account is to lock it. For that run the following command.  
+  ```batch
+  sudo passwd -l root
+  ```  
 
 # Summary
 
