@@ -1,5 +1,5 @@
-After years on Windows and having on the side this old Asus EeePC 11010HA collecting dust in storage I decided to give it a second life following the discovery of [Arch Linux](https://www.archlinux.org) and [Xmonad](http://xmonad.org/) from a friend who is working on a startup.  
-I've tried a lot of other windows and Linux distributions on this machine in the past without success, mainly relating to the video driver which is the Intel GMA500.  This post summarizes how to set up Arch Linux on a laptop.
+After years on Windows and having on the side this old Asus EeePC 11010HA collecting dust in storage, I decided to give it a second life following the discovery of [Arch Linux](https://www.archlinux.org) and [Xmonad](http://xmonad.org/) from a friend who is working in a startup.  
+I've tried a lot of other windows and Linux distributions on this machine in the past without success, mainly due to problems with the video driver, which is the Intel GMA500.  This post summarizes how to set up Arch Linux on a laptop.
 I will set up this machine as a Linux development machine until I feel confident that I can do a full switch of my main PC.
 
 # Preparing the USB drive
@@ -9,7 +9,7 @@ The first setup before installing Arch Linux is to create a USB boot drive insta
 ## Download required
 
 You will need to download two things:
-1. [Yumi Multiboot](http://www.pendrivelinux.com/yumi-multiboot-usb-creator/) : This will allow you to create the USB Boot drive simply. If you have chocolatey installed on your machine you can run the following command ```powershell
+1. [Yumi Multiboot](http://www.pendrivelinux.com/yumi-multiboot-usb-creator/) : This will allow you to easily create the USB Boot drive. If you have chocolatey installed on your machine you can run the following command ```powershell
 choco install yumi```
 2. [Arch Linux ISO](https://www.archlinux.org/download/): This is the ISO image
 
@@ -18,12 +18,12 @@ choco install yumi```
 1. Open Yumi and set the parameters as below. Don't forget to check "*we Will Fat32 Format F: Drive!* "  
    ![Yumi setting](./Yumi Setting.PNG)  
 
-2. Click "*Create*" and wait for the creation of boot USB key
+2. Click "*Create*" and wait for the creation of the bootable USB key
    ![Yumi Running](./Yumi Running.PNG)
 
 # Installation of Arch Linux
 
-The instruction below are mainly out from the youtube [video](https://www.youtube.com/watch?v=Wqh9AQt3nho) that *Goguda55 Tech Tutorial* made. Thank you to him!
+The instructions below are mainly from the youtube [video](https://www.youtube.com/watch?v=Wqh9AQt3nho) that *Goguda55 Tech Tutorial* made. Thank you to him!
 I've added some information during the initial installation process, like installing wifi packages. These packages are useful when you are setting up a non wired computer.
 
 ## Instructions
@@ -37,7 +37,7 @@ You need to boot your computer using the USB key we made above.
 
    ![Arch Install](./01 - ArchLinux Boot Screen.PNG)  
 
-   This will bring you to the basic command prompt. This prompt is the one of the installation OS which is hosted on the USB Key
+   This will bring you to the basic command prompt. This prompt is from the installation's OS, which is hosted on the USB Key
 
    ![Arch base prompt](./02 - ArchLinux Startup prompt.PNG)  
 
@@ -47,7 +47,7 @@ You need to boot your computer using the USB key we made above.
    ```batch
    fdisk -l
    ```  
-   This will list all the disk you have on your machine. In my case the command returns this: 
+   This will list all the disks you have on your machine. In my case the command returns this: 
 
    ![fdisk result](./03 - ArchLinux fdisk result.PNG)
 
@@ -59,7 +59,7 @@ You need to boot your computer using the USB key we made above.
    **Remark**: Creating two partitions is the minimum you have to do. However you will find in the literature that often there can be more partitions. However in our case two are enough.
 
     * Swap partition : half of the size of your memory
-    * Data partition : We will create a single partition for all the rest. We won't try to be clever and create different partition for different folder.  
+    * Data partition : We will create a single partition for all the rest. We won't try to be clever and create different partitions for different folders.  
 
  Run the command below to start the partition manager :  
    ```batch
@@ -73,7 +73,7 @@ You need to boot your computer using the USB key we made above.
     mount /dev/sda2 /mnt
     ```  
 5. ### Initialize  the Swap partition
-  The Swap partition is initialized using the following simple command. The first one initializes the swap then the second enables it.  
+  The Swap partition is initialized using the following simple command. The first one initializes the swap partition, and then the second enables it.  
     
     ```batch
     mkswap /dev/sda1
@@ -86,13 +86,13 @@ You need to boot your computer using the USB key we made above.
     wifi-menu
     ```  
 7. ### Download all the Archlinux base packages
-  Now that we have the network setup completed we can download from the Internet all the base and base-devel packages of Archlinux to the /mnt mount point. We do that by running the following command.  
+  Now that we have the network setup completed we can download from the Internet all the base and base-devel packages of Archlinux to the /mnt mount point. We do that by running the following command:  
     
     ```batch
     pacstrap /mnt base base-devel
     ```  
 8. ### Start ArchLinux partition
-  Now that we have downloaded all the packages required for the base image of Archlinux it's time to start that new partition. Archlinux comes with a specific tool that starts the archlinux session as root. When you run the command you will see the command prompt change.  
+  Now that we have downloaded all the packages required for the base image of Archlinux, it's time to start that new partition. Archlinux comes with a specific tool that starts the archlinux session as root. When you run the command you will see the command prompt change.  
     
     ```batch
     arch-chroot /mnt
@@ -118,25 +118,25 @@ You need to boot your computer using the USB key we made above.
     ln -s /usr/share/zoneinfo/Hongkong /etc/localtime
     ```  
 12. ### Give a name to the computer
-  We have to set the file */etc/hostna,e* to contain the name of the current computer (think of a fun name!). The best way to do that is to print to the file the name you choose using output redirection, like this:  
+  We have to set the file */etc/hostname* to contain the name of the current computer (think of a fun name!). The best way to do that is to print to the file the name you choose using output redirection, like this:  
     
     ```batch
     echo archlinuxEeePC > /etc/hostname
     ```  
 13. ### Install some useful packages for wireless
-  As we are installing ArchLinux on a laptop it is useful to install some  network tool to be able to reconnect after the reboot. The package netctl allows you to manage configuration using profiles. We are also going to install a dialog to allow the command *wifi-menu* that we used earlier to work.  
+  As we are installing ArchLinux on a laptop it is useful to install a network tool to be able to reconnect after the reboot. The package netctl allows you to manage configuration using profiles. We are also going to install a dialog to allow the command *wifi-menu* that we used earlier to work.  
     
     ```batch
     pacman -S netctl dialog
     ```  
 14. ### Installing and Setting Grub boot loader
   We're almost done...  :-)  
-  We now have to install and set up the bootloader. The most common used today is Grub. The bootloader allows us to choose the OS we want to boot and take all the driver initialize. We have to run several commands to acheive the following:
-      - Download the Grub package from internet.
+  We now have to install and set up the bootloader. The most common used today is Grub. The bootloader allows us to choose the OS we want to boot and to initialise all of the required drivers. We have to run several commands to achieve the following:
+      - Download the Grub package from the internet.
       - Install Grub as bootloader on the drive */dev/sda*
-      - Create the default configuration of Grub. This is the default one. We will do another article how to customize that.  
+      - Create the default configuration of Grub. This is the default one. There will be another article on how to customize that.  
   
-  Here's the commands to run:    
+  Here are the commands to run:    
     ```batch
     pacman -S grub-bios
     grub-install /dev/sda
@@ -145,7 +145,7 @@ You need to boot your computer using the USB key we made above.
     ```  
 
 15. ### Final steps. unmount and reboot
-  Here we are, the last step... We have to run the below command to exit the current instance of ArchLinux we just set up and return to the boot OS. Following that we will create the static information about the file system and unmount the file system and finally reboot.  
+  Here we are, the last step... We have to run the below command to exit the current instance of ArchLinux that we just set up and return to the boot OS. Following that we will create the static information about the file system, unmount the file system and then finally reboot.  
     
     ```batch
     exit
@@ -154,13 +154,13 @@ You need to boot your computer using the USB key we made above.
     shutdown -r
     ```  
 
-# Wrapping
+# Wrap up
 
 Congratulations! We now have a freshly installed Archlinux base installation. In the upcoming articles we will look at the following post installation steps:
     - User and security
-    - Network confuguration
+    - Network configuration
     - basic service and toll setup
-    - Windows Manager and windows windows
+    - Windows Manager and windows windows (?)
     - XMonad configuration
-    - vi advance setup
+    - vi advanced setup
     - Development environment setup for .Net/F#
