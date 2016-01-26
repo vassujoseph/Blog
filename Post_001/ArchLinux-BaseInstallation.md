@@ -18,7 +18,7 @@ choco install yumi```
 1. Open Yumi and set the parameters as below. Don't forget to check "*we Will Fat32 Format F: Drive!* "  
    ![Yumi setting](./Yumi Setting.PNG)  
 
-2. Click "*Create*" and wait for the creation of the bootable USB key
+2. Click "*Create*" and wait for the creation of the bootable USB key 
    ![Yumi Running](./Yumi Running.PNG)
 
 # Installation of Arch Linux
